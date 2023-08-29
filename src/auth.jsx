@@ -19,11 +19,9 @@ export const AuthProvider = () => {
 
     return unsub;
   }, [auth]);
-  console.log("user", user);
 
   const handleLogout = async () => {
     try {
-      console.log("auth", auth);
       await auth.signOut();
       setUser(null);
     } catch (error) {
@@ -33,7 +31,7 @@ export const AuthProvider = () => {
 
   let content = {
     auth: (
-      <>
+      <div style={{ border: "1px solid black", padding: "15px" }}>
         <div>{user?.displayName}</div>
         <div>{user?.metadata.lastSignInTime}</div>
         <button
@@ -44,7 +42,7 @@ export const AuthProvider = () => {
         >
           SingOut
         </button>
-      </>
+      </div>
     ),
     unAuth: "...You unauthorised",
   };
